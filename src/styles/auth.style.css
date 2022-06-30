@@ -1,0 +1,22 @@
+.auth_bg:before {
+    background-image: url('../images/creator/login_bg_up.png');
+    width: 244px;
+    height: 244px;
+    background-size: cover;
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 20%;
+    top: -54px;
+}
+
+.auth_bg:after {
+    background-image: url("../images/creator/login_bg_down.png");
+    width: 244px;
+    height: 244px;
+    background-size: cover;
+    content: "";
+    right:54px;
+    position: absolute;
+    bottom: -54px;
+}
