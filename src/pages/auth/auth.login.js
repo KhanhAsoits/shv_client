@@ -1,10 +1,17 @@
 import {Container, Row, Col, Spinner} from "react-bootstrap";
 import logo from '../../images/creator/create_logo.png'
 import {useEffect, useRef, useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import '../../styles/auth.style.css'
+import {loginAPI} from "../../api/auth.api";
+import {check_is_auth, restore_cookies} from "../../app/app.cookies.config";
+import {restoredToken} from "../../api/auto_config.api";
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export const LoginPage = () => {
+    const navigate = useNavigate()
+    const notify = (msg) => toast(msg)
     const initValidErr = {email: "", password: "", isValid: false}
     const [preloader, setPreloader] = useState(true)
     const [validErr, setValidErr] = useState(initValidErr)
@@ -54,9 +61,25 @@ export const LoginPage = () => {
     const wait = (time) => {
         return new Promise(resolve => setTimeout(resolve, time * 1000))
     }
-    const handleLogin = () => {
+    const handleLogin = async () => {
+
         if (isValid === true) {
-            alert('login')
+            if (!isFetch) {
+                setIsFetch(true)
+                await wait(2)
+                setIsFetch(false)
+
+                let res = await loginAPI(email, password)
+                if (res.status) {
+                    restore_cookies('userId', res.data.userId)
+                    restoredToken(res.data.access_token)
+                    notify('Đăng Nhập Thành Công!')
+                    window.location.assign(window.location.href)
+                } else {
+                    notify(res?.msg)
+                }
+
+            }
         }
     }
 
@@ -98,9 +121,15 @@ export const LoginPage = () => {
     useEffect(() => {
     }, [isFetch])
 
+    useEffect(() => {
+        if (check_is_auth()) {
+            navigate('/')
+        }
+    }, [])
 
     return (
         <Container fluid style={{backgroundColor: "#f8f8f8"}}>
+            <ToastContainer></ToastContainer>
             <Row>
                 <Col xs={1} sm={2} md={3} lg={4}></Col>
                 <Col xs={10} sm={8} md={6} lg={4}
@@ -158,12 +187,23 @@ export const LoginPage = () => {
                                 <p className={'text-start text-xs text-red-700'}>{validErr.password}</p>
                             </div>
 
-                            <button className={`w-100 text-white text-sm font-semibold rounded-md`}
-                                    style={{
-                                        backgroundColor: isValid === true ? '#7367f0' : '#a49df5',
-                                        padding: '10px 0'
-                                    }}
-                                    onClick={handleLogin}>
+                            <button
+                                className={` w-100 text-white flex justify-center items-center text-sm font-semibold rounded-md`}
+
+                                style={{
+                                    backgroundColor: isValid === true ? '#7367f0' : '#a49df5',
+                                    padding: '10px 0'
+                                }}
+                                onClick={handleLogin}>
+                                {
+                                    isFetch &&
+                                    <Spinner
+                                        className={'mr-3'}
+                                        animation="border"
+                                        size="sm"
+                                    />
+                                }
+
                                 Đăng Nhập
                             </button>
                             <h6 className={'text-center tracking-wide text-sm font-normal mt-4'}>Chưa có tài khoản?<Link

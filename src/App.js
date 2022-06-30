@@ -10,6 +10,8 @@ import {NotFoundPage} from "./pages/errors/404";
 import {AdminLayout} from "./pages/layouts/admin.layout";
 import {ClientLayout} from "./pages/layouts/client.layout";
 import {AuthorsLayout} from "./pages/layouts/authors.layout";
+import {RegisterPage} from "./pages/auth/auth.register";
+import {Authorial} from "./components/ProtectedPage";
 
 function App() {
     return (
@@ -17,7 +19,11 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     {/*protexted page*/}
-                    <Route path={'/'} element={<ClientLayout></ClientLayout>}>
+                    <Route path={'/'} element={
+                        <Authorial>
+                            <ClientLayout></ClientLayout>
+                        </Authorial>
+                    }>
                         <Route index path={'/'} element={<Index></Index>}></Route>
                     </Route>
                     <Route path={'/author'} element={<AuthorsLayout></AuthorsLayout>}>
@@ -28,6 +34,7 @@ function App() {
                     </Route>
                     <Route path={'/auth'}>
                         <Route index path={'/auth'} element={<LoginPage></LoginPage>}></Route>
+                        <Route path={'register'} element={<RegisterPage></RegisterPage>}></Route>
                     </Route>
                     <Route path={'*'} element={<NotFoundPage></NotFoundPage>}></Route>
                 </Routes>
