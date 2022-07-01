@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 function Index() {
-  return (
-    <div>client.index</div>
-  )
+  return <div>HomePage</div>;
 }
 
-export default Index
+export default Index;
