@@ -17,10 +17,20 @@ const Modal = (props) => {
   }, [props]);
 
   return (
-    <div ref={modalRef} className={`${props.isShowModal ? '' : ''}`}>
-      <div>
+    <div
+      ref={modalRef}
+      className='fixed w-full h-full top-0 left-0 flex items-center justify-center bg-[rgba(0,0,0,0.5)]'
+    >
+      <div
+        className={`w-[500px] bg-white text-center relative rounded-lg shadow-sm overflow-hidden`}
+      >
         {!props.hideCloseButton && (
-          <span onClick={() => props.setIsShowModal(false)}>&times;</span>
+          <span
+            onClick={() => props.setIsShowModal(false)}
+            className='absolute top-0 right-0 cursor-pointer text-textSecondaryColor text-2xl opacity-50 p-4 hover:text-opacity-75'
+          >
+            <i className='fa-solid fa-xmark'></i>
+          </span>
         )}
         {props.children}
       </div>
