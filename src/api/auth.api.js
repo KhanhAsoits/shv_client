@@ -3,11 +3,10 @@ import {API_CONFIGS} from "./config.api";
 import {restoredToken} from "./auto_config.api";
 
 export const loginAPI = async (email, password) => {
-    console.log(email, password)
     let res = await axios.post(`${API_CONFIGS.API_URL}/auth/get_token`, {
         email: email,
         password: password
-    }).then((res) => res.data)
+    }).then((res) => res.data).catch((err)=>err)
     return res
 }
 

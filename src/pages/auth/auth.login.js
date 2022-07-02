@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css'
 export const LoginPage = () => {
     const navigate = useNavigate()
     const notify = (msg) => toast(msg)
-    const initValidErr = {email: "", password: "", isValid: false}
+    const initValidErr = {email: {isValid: false, msg: ''}, password: {isValid: false, msg: ''}}
     const [preloader, setPreloader] = useState(true)
     const [validErr, setValidErr] = useState(initValidErr)
     const [showPassword, setShowPassword] = useState(false)
@@ -34,27 +34,27 @@ export const LoginPage = () => {
         if (email.trim() !== '') {
             if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
                 setValidErr({
-                    ...validErr, email: ""
+                    ...validErr, email: {isValid: true, msg: ''}
                 })
             } else {
-                setValidErr({...validErr, email: "Email không đúng định dạng!"})
+                setValidErr({...validErr, email: {isValid: false, msg: "Email không đúng định dạng!"}})
             }
         } else {
-            setValidErr({...validErr, email: "Email không được để trống!"})
+            setValidErr({...validErr, email: {isValid: false, msg: "Email không được để trống!"}})
         }
     }
 
     const handleValidPassword = (password) => {
         if (password.trim() !== '') {
             if (password.length < 8) {
-                setValidErr({...validErr, password: "Mật khẩu không thể ít hơn 8 ký tự!"})
+                setValidErr({...validErr, password: {isValid: false, msg: "Mật khẩu không thể ít hơn 8 ký tự!"}})
             } else {
                 setValidErr({
-                    ...validErr, password: ""
+                    ...validErr, password: {isValid: true, msg: ''}
                 })
             }
         } else {
-            setValidErr({...validErr, password: "Mật khẩu không được để trống!"})
+            setValidErr({...validErr, password: {isValid: false, msg: "Mật khẩu không được để trống!"}})
         }
     }
 
@@ -70,6 +70,9 @@ export const LoginPage = () => {
                 setIsFetch(false)
 
                 let res = await loginAPI(email, password)
+                if (res?.code == 'ERR_NETWORK'){
+                    notify('Có lỗi xảy ra , chúng tôi sẽ khắc phục sớm nhất,xin hãy quy lại sau.')
+                }
                 if (res.status) {
                     restore_cookies('userId', res.data.userId)
                     restoredToken(res.data.access_token)
@@ -100,7 +103,6 @@ export const LoginPage = () => {
     useEffect(() => {
         if (validMount.current === true) {
             handleValidEmail(email)
-            handleValidPassword(password)
         }
         //    call when email  state change
     }, [email])
@@ -112,7 +114,7 @@ export const LoginPage = () => {
     }, [password])
     useEffect(() => {
         if (validMount.current === true) {
-            setIsValid((validErr.email.trim() === '' && validErr.password.trim() === ''))
+            setIsValid((validErr.email.isValid && validErr.password.isValid))
         }
         // call when valid err change
     }, [validErr])
@@ -153,7 +155,7 @@ export const LoginPage = () => {
                             <div className={'w-100 my-3 space-y-4'}>
                                 <h6 className={'text-xs font-normal text-start mb-0'}>Email</h6>
                                 <input type={'text'} name={'email-input'} id={'txt_email'}
-                                       className={`w-100 border-1 mt-1 rounded-md focus:outline-0 ${validErr.email !== "" ? 'border-red-500' : 'border-purple-400'}`}
+                                       className={`w-100 border-1 mt-1 rounded-md focus:outline-none focus:border-1 ${validErr.email.msg !== '' ? 'border-red-500' : 'border-purple-400'}`}
                                        style={{padding: "6px 12px"}}
                                        onChange={(e) => {
                                            validMount.current = true
@@ -161,7 +163,7 @@ export const LoginPage = () => {
                                        }}
                                        value={email}
                                 />
-                                <p className={'text-start text-xs text-red-700'}>{validErr.email}</p>
+                                <p className={'text-start text-xs text-red-700'}>{validErr.email.msg}</p>
                                 <div className={'flex justify-between items-center mb-0'}>
                                     <h6 className={'text-xs font-normal text-start  mb-0'}>Mật khẩu</h6>
                                     <Link to={'/forgot-password'} className={'no-underline text-xs text-purple-500'}>Quên
@@ -169,10 +171,10 @@ export const LoginPage = () => {
                                         Khẩu?</Link>
                                 </div>
                                 <div
-                                    className={`w-100 flex justify-center items-center rounded-md mt-1  border-1 py-0 px-2 ${validErr.password !== "" ? 'border-red-500' : 'border-purple-400'}`}>
+                                    className={`w-100 flex justify-center items-center rounded-md mt-1  border-1 py-0 px-2 ${validErr.password.msg !== '' ? 'border-red-500' : 'border-purple-400'}`}>
                                     <input type={`${showPassword ? 'text' : 'password'}`} name={'password-input'}
                                            id={'txt_password'}
-                                           className={'w-100 border-0 rounded-md focus:outline-0 focus:border-0'}
+                                           className={'w-100 border-0 outline-none rounded-md focus:outline-0 focus:border-0 '}
                                            style={{padding: "6px"}}
                                            onChange={(e) => {
                                                validMount.current = true
@@ -184,7 +186,7 @@ export const LoginPage = () => {
                                         className={`fa-solid  ${showPassword ? 'fa-eye-slash' : 'fa-eye'} hover:cursor-pointer`}
                                         onClick={handleShowPassword}></span>
                                 </div>
-                                <p className={'text-start text-xs text-red-700'}>{validErr.password}</p>
+                                <p className={'text-start text-xs text-red-700'}>{validErr.password.msg}</p>
                             </div>
 
                             <button

@@ -211,7 +211,7 @@ export const RegisterPage = () => {
                                 <h6 className={'text-xs font-normal text-start mb-0'}>Tên Tài Khoản</h6>
 
                                 <input type={'text'} name={'name-input'} id={'txt_name'}
-                                       className={`w-100 border-1 mt-1 rounded-md focus:outline-0 ${validErr.name.msg !== "" ? 'border-red-500' : 'border-purple-400'}`}
+                                       className={`w-100 border-1 mt-1 rounded-md  focus:outline-none focus:border-1 ${validErr.name.msg !== '' ? 'border-red-500' : 'border-purple-400'}`}
                                        style={{padding: "6px 12px"}}
                                        onChange={(e) => {
                                            validMount.current = true
@@ -224,7 +224,7 @@ export const RegisterPage = () => {
                                 {/*email*/}
                                 <h6 className={'text-xs font-normal text-start mb-0'}>Email</h6>
                                 <input type={'text'} name={'email-input'} id={'txt_email'}
-                                       className={`w-100 border-1 mt-1 rounded-md focus:outline-0 ${validErr.email.msg !== "" ? 'border-red-500' : 'border-purple-400'}`}
+                                       className={`w-100 border-1 mt-1 rounded-md  focus:outline-none  focus:border-1 ${validErr.email.msg !== '' ? 'border-red-500' : 'border-purple-400'}`}
                                        style={{padding: "6px 12px"}}
                                        onChange={(e) => {
                                            validMount.current = true
@@ -237,10 +237,10 @@ export const RegisterPage = () => {
                                 {/*password*/}
                                 <h6 className={'text-xs font-normal text-start mb-0'}>Mật khẩu</h6>
                                 <div
-                                    className={`w-100 flex justify-center items-center rounded-md mt-1  border-1 py-0 px-2 ${validErr.password.msg !== "" ? 'border-red-500' : 'border-purple-400'}`}>
+                                    className={`w-100 flex justify-center items-center rounded-md mt-1  border-1 py-0 px-2 ${validErr.password.msg !== '' ? 'border-red-500' : 'border-purple-400'}`}>
                                     <input type={`${showPassword ? 'text' : 'password'}`} name={'password-input'}
                                            id={'txt_password'}
-                                           className={'w-100 border-0 rounded-md focus:outline-0 focus:border-0'}
+                                           className={'w-100 border-0 rounded-md focus:outline-none focus:border-0'}
                                            style={{padding: "6px"}}
                                            onChange={(e) => {
                                                validMount.current = true
@@ -262,10 +262,10 @@ export const RegisterPage = () => {
                                         Khẩu?</Link>
                                 </div>
                                 <div
-                                    className={`w-100 flex justify-center items-center rounded-md mt-1  border-1 py-0 px-2 ${validErr.confirmPassword.msg !== "" ? 'border-red-500' : 'border-purple-400'}`}>
+                                    className={`w-100 flex justify-center items-center rounded-md mt-1  border-1 py-0 px-2 ${validErr.confirmPassword.msg !== '' ? 'border-red-500' : 'border-purple-400'}`}>
                                     <input type={`${showConfirmPassword ? 'text' : 'password'}`} name={'password-input'}
                                            id={'txt_password'}
-                                           className={'w-100 border-0 rounded-md focus:outline-0 focus:border-0'}
+                                           className={'w-100 border-0 rounded-md focus:outline-none focus:border-0'}
                                            style={{padding: "6px"}}
                                            onChange={(e) => {
                                                validMount.current = true
