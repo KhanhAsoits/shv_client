@@ -52,71 +52,76 @@ const ModalAuth = ({
         </div>
       </ModalHeader>
       <ModalBody>
-        <div className='flex flex-wrap w-full px-20 py-6'>
-          <div className='w-full mb-4'>
-            <label
-              htmlFor='email'
-              className='block text-start mb-2 ml-1 text-textSecondaryColor'
-            >
-              Email
-            </label>
-            <input
-              id='email'
-              type='text'
-              placeholder='Email'
-              className='w-full px-3 py-1.5 border-2 border-transparent border-gray-300 rounded-full bg-[#f7f7f7] outline-none focus:border-[#dfe5e5]'
-            />
-          </div>
-          <div className='w-full mb-4'>
-            <label
-              htmlFor='password'
-              className='block text-start mb-2 ml-1 text-textSecondaryColor'
-            >
-              Mật khẩu
-            </label>
-            <input
-              id='password'
-              type='password'
-              placeholder='Mật khẩu'
-              className='w-full px-3 py-1.5 border-2 border-transparent border-gray-300 rounded-full bg-[#f7f7f7] outline-none focus:border-[#dfe5e5]'
-            />
-          </div>
-          {isShowModalLogin && (
-            <div className='w-full mb-4 text-start flex items-center'>
-              <input type='checkbox' id='rememberPassword' />
-              <label
-                className='ml-2.5 text-textSecondaryColor'
-                htmlFor='rememberPassword'
-              >
-                Ghi nhớ mật khẩu
-              </label>
-            </div>
-          )}
-          {!isShowModalLogin && (
+        <form>
+          <div className='flex flex-wrap w-full px-20 py-6'>
             <div className='w-full mb-4'>
               <label
-                htmlFor='passwordConfirm'
+                htmlFor='email'
                 className='block text-start mb-2 ml-1 text-textSecondaryColor'
               >
-                Nhập lại mật khẩu
+                Email
               </label>
               <input
-                id='passwordConfirm'
-                type='password'
-                placeholder='Nhập lại mật khẩu'
-                className='w-full px-3 py-1.5 border-2 border-transparent border-gray-300 rounded-full bg-[#f7f7f7] outline-none focus:border-[#dfe5e5]'
+                id='email'
+                type='text'
+                placeholder='Email'
+                className='w-full px-3 py-1.5 border-[3px] border-transparent rounded-full bg-[#f7f7f7] outline-none focus:border-[#dfe5e5]'
+                autoComplete='email'
               />
             </div>
-          )}
+            <div className='w-full mb-4'>
+              <label
+                htmlFor='password'
+                className='block text-start mb-2 ml-1 text-textSecondaryColor'
+              >
+                Mật khẩu
+              </label>
+              <input
+                id='password'
+                type='password'
+                placeholder='Mật khẩu'
+                className='w-full px-3 py-1.5 border-[3px] border-transparent rounded-full bg-[#f7f7f7] outline-none focus:border-[#dfe5e5]'
+                autoComplete='currentPassword'
+              />
+            </div>
+            {isShowModalLogin && (
+              <div className='w-full mb-4 text-start flex items-center'>
+                <input type='checkbox' id='rememberPassword' />
+                <label
+                  className='ml-2.5 text-textSecondaryColor'
+                  htmlFor='rememberPassword'
+                >
+                  Ghi nhớ mật khẩu
+                </label>
+              </div>
+            )}
+            {!isShowModalLogin && (
+              <div className='w-full mb-4'>
+                <label
+                  htmlFor='passwordConfirm'
+                  className='block text-start mb-2 ml-1 text-textSecondaryColor'
+                >
+                  Nhập lại mật khẩu
+                </label>
+                <input
+                  id='passwordConfirm'
+                  type='password'
+                  placeholder='Nhập lại mật khẩu'
+                  className='w-full px-3 py-1.5 border-[3px] border-transparent rounded-full bg-[#f7f7f7] outline-none focus:border-[#dfe5e5]'
+                  autoComplete='passwordConfirm'
+                />
+              </div>
+            )}
 
-          <Button
-            className={
-              'w-full flex items-center justify-center py-2 px-3 bg-textHover rounded-full text-white font-semibold hover:text-[#212529] hover:bg-[#91a1a1] '
-            }
-          >
-            <span>{isShowModalLogin ? 'Đăng nhập' : 'Đăng ký'}</span>
-          </Button>
-        </div>
+            <Button
+              className={
+                'w-full flex items-center justify-center py-2 px-3 bg-textHover rounded-full text-white font-semibold hover:text-[#212529] hover:bg-[#91a1a1] '
+              }
+            >
+              <span>{isShowModalLogin ? 'Đăng nhập' : 'Đăng ký'}</span>
+            </Button>
+          </div>
+        </form>
       </ModalBody>
       <ModalFooter>
         <div className='bg-[#f7f7f7] p-3 px-20'>

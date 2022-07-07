@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 
 const Button = ({ children, onClick = () => {}, className }) => {
   return (
-    <button className={className} onClick={() => onClick()}>
+    <button className={className} onClick={onClick}>
       {children}
     </button>
   );
 };
 
 Button.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
   onClick: PropTypes.func,
 };
 
