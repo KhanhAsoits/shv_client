@@ -10,6 +10,8 @@ import ModalAuth from './client.modalAuth.js';
 import '../../styles/clientNavbar.style.css';
 import HeaderMobileMenu from '../client/components/HeaderMobileMenu';
 
+import preventScroll from '../../utils/preventScroll';
+
 const categoryList = [
   {
     path: '/truyen',
@@ -198,6 +200,7 @@ export const ClientNavbar = (props) => {
               onClick={() => {
                 setIsShowModal(true);
                 setIsShowModalLogin(true);
+                setIsShowSearch(true);
               }}
             >
               Đăng nhập
@@ -220,6 +223,7 @@ export const ClientNavbar = (props) => {
                 onClick={() => {
                   setIsShowSearch(true);
                   setIsShowMenuMobile(false);
+                  preventScroll(false);
                 }}
               >
                 <i className='fa-solid fa-magnifying-glass p-2 text-xl'></i>
@@ -238,13 +242,17 @@ export const ClientNavbar = (props) => {
                 onClick={() => {
                   setIsShowMenuMobile(true);
                   setIsShowSearch(false);
+                  preventScroll(true);
                 }}
               >
                 <i className='fa-solid fa-bars p-2 text-2xl'></i>
               </span>
               <span
                 className={`${isShowMenuMobile ? 'block' : 'hidden'}`}
-                onClick={() => setIsShowMenuMobile(false)}
+                onClick={() => {
+                  setIsShowMenuMobile(false);
+                  preventScroll(false);
+                }}
               >
                 <i className='fa-solid fa-xmark p-2 text-3xl'></i>
               </span>
@@ -274,7 +282,10 @@ export const ClientNavbar = (props) => {
 
           <div
             className='overlay'
-            onClick={() => setIsShowMenuMobile(false)}
+            onClick={() => {
+              setIsShowMenuMobile(false);
+              preventScroll(false);
+            }}
           ></div>
         </div>
 
