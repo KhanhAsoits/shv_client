@@ -9,6 +9,11 @@ module.exports = {
         textHover: '#a6b3b3',
       },
     },
+    screens: {
+      mobile: '576px',
+      tablet: '768px',
+      desktop: '992px',
+    },
   },
   plugins: [],
 };

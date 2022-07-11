@@ -52,7 +52,10 @@ function Index() {
                             .fill(0)
                             .fill(0)
                             .map((item, index) => (
-                              <li className='text-textPrimaryColor mb-2 .text-truncate-1-block hover:text-textHover cursor-pointer'>
+                              <li
+                                className='text-textPrimaryColor mb-2 .text-truncate-1-block hover:text-textHover cursor-pointer'
+                                key={index}
+                              >
                                 <Link to='/thong-tin/hoi-dap'>
                                   Làm sao để lên cấp vậy?
                                 </Link>

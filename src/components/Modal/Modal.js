@@ -19,7 +19,7 @@ const Modal = (props) => {
   return (
     <div
       ref={modalRef}
-      className='fixed w-full h-full top-0 left-0 flex items-center justify-center bg-[rgba(0,0,0,0.5)]'
+      className='fixed z-20 w-full h-full top-0 left-0 flex items-center justify-center bg-[rgba(0,0,0,0.5)]'
     >
       <div
         className={`w-[500px] bg-white text-center relative rounded-lg shadow-sm overflow-hidden`}
