@@ -3,9 +3,8 @@ import {AuthorNavbar} from "./author.navbar";
 
 export const AuthorsLayout = (props) => {
     return (
-        <div>
+        <div className={'bg-gray-50'}>
             <AuthorNavbar/>
-            <Outlet/>
         </div>
     )
 }
