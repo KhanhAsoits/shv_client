@@ -127,8 +127,8 @@ export const ClientNavbar = (props) => {
                 <i className='fa-solid fa-bars'></i>
               </span>
               <span className='ml-1.5'>
-                Thể loại
-                <ul className='z-10 flex flex-wrap w-[500px] px-6 py-3 bg-white shadow-sm transition-all invisible opacity-0 absolute top-full left-0 group-hover:visible group-hover:opacity-100 '>
+                <span className='text-textPrimaryColor'>Thể loại</span>
+                <ul className='z-10 flex flex-wrap w-[500px] font-normal px-6 py-3 bg-white shadow-sm transition-all invisible opacity-0 absolute top-full left-0 group-hover:visible group-hover:opacity-100 '>
                   {categoryList.length > 0 &&
                     categoryList.map((category, index) => {
                       return (
@@ -148,8 +148,8 @@ export const ClientNavbar = (props) => {
             <div className='px-3 py-6 font-semibold cursor-pointer hover:bg-[#edf0f0] relative group hover:after:block after:hidden after:content-[""] after:absolute after:bottom-0 after:right-1/2 after:translate-x-1/2 after:border-8 after:border-transparent after:border-b-white hidden desktop:block'>
               <div onClick={() => navigate('/bang-xep-hang')}>
                 <span className='text-textPrimaryColor'>
-                  Bảng xếp hạng
-                  <ul className='z-10 flex flex-wrap w-[160px] py-3 px-0 bg-white shadow-sm transition-all invisible opacity-0 absolute top-full left-0 group-hover:visible group-hover:opacity-100'>
+                  <span className='text-textPrimaryColor'>Bảng xếp hạng</span>
+                  <ul className='z-10 flex flex-wrap w-[160px] font-normal py-3 px-0 bg-white shadow-sm transition-all invisible opacity-0 absolute top-full left-0 group-hover:visible group-hover:opacity-100'>
                     {rankList.length > 0 &&
                       rankList.map((rank, index) => {
                         return (

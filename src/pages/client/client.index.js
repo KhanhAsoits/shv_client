@@ -8,6 +8,7 @@ import SectionHeader from './components/Comic/SectionLayout/SectionHeader';
 
 import imageUrl from '../../images/common/comic-image1.jpg';
 import { Link } from 'react-router-dom';
+import NewUpdatedComic from './components/Comic/NewUpdatedComic';
 
 function Index() {
   return (
@@ -68,6 +69,11 @@ function Index() {
                 </Row>
               </Fragment>
             </SectionLayout>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12}>
+            <NewUpdatedComic />
           </Col>
         </Row>
       </ClientMainLayout>
