@@ -28,8 +28,10 @@ const ComicCard = (props) => {
             {title}
           </Link>
         </h4>
-        <p className='comic-description text-truncate-2'>{description}</p>
-        <div className='flex justify-between items-center mt-2 text-textSecondaryColor'>
+        <p className='comic-description text-sm text-textSecondaryColor text-truncate-2'>
+          {description}
+        </p>
+        <div className='flex justify-between items-center mt-3 text-textSecondaryColor'>
           <div className='flex text-sm items-center'>
             <i className='fa-solid fa-user-pen mr-2'></i>
             <p>{author}</p>

@@ -8,6 +8,8 @@ import SectionHeader from './components/Comic/SectionLayout/SectionHeader';
 
 import imageUrl from '../../images/common/comic-image1.jpg';
 import { Link } from 'react-router-dom';
+import NewUpdatedComic from './components/Comic/NewUpdatedComic';
+import TopRateComicList from './components/Comic/TopRateComicList';
 
 function Index() {
   return (
@@ -52,7 +54,10 @@ function Index() {
                             .fill(0)
                             .fill(0)
                             .map((item, index) => (
-                              <li className='text-textPrimaryColor mb-2 .text-truncate-1-block hover:text-textHover cursor-pointer'>
+                              <li
+                                className='text-textPrimaryColor mb-2 .text-truncate-1-block hover:text-textHover cursor-pointer'
+                                key={index}
+                              >
                                 <Link to='/thong-tin/hoi-dap'>
                                   Làm sao để lên cấp vậy?
                                 </Link>
@@ -66,6 +71,14 @@ function Index() {
               </Fragment>
             </SectionLayout>
           </Col>
+        </Row>
+        <Row>
+          <Col xs={12}>
+            <NewUpdatedComic />
+          </Col>
+        </Row>
+        <Row className='pt-16'>
+          <TopRateComicList />
         </Row>
       </ClientMainLayout>
     </div>

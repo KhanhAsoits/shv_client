@@ -145,17 +145,17 @@ export const LoginPage = () => {
                     {
                         !preloader &&
                         <div
-                            className={'auth_bg z-10 bg-white border flex flex-col items-center rounded-lg w-100 p-4 text-center'}>
+                            className={'auth_bg z-10 bg-white border flex flex-col items-center rounded-lg w-full p-4 text-center'}>
                             <img src={logo} alt={'logo'} className={'object-fit w-12 mb-3 mt-2'}/>
-                            <div className={'w-100'}>
+                            <div className={'w-full'}>
                                 <h6 className={'text-start text-md font-medium'}>Chào mừng đến với V
                                     creator!</h6>
                                 <p className={'text-start text-md font-light'}>Đăng nhập và viết gì đó nào!</p>
                             </div>
-                            <div className={'w-100 my-3 space-y-4'}>
+                            <div className={'w-full my-3 space-y-4'}>
                                 <h6 className={'text-xs font-normal text-start mb-0'}>Email</h6>
                                 <input type={'text'} name={'email-input'} id={'txt_email'}
-                                       className={`w-100 border-1 mt-1 rounded-md focus:outline-none focus:border-1 ${validErr.email.msg !== '' ? 'border-red-500' : 'border-purple-400'}`}
+                                       className={`w-full border mt-1 rounded-md focus:outline-none focus:border ${validErr.email.msg !== '' ? 'border-red-500' : 'border-purple-400'}`}
                                        style={{padding: "6px 12px"}}
                                        onChange={(e) => {
                                            validMount.current = true
@@ -171,10 +171,10 @@ export const LoginPage = () => {
                                         Khẩu?</Link>
                                 </div>
                                 <div
-                                    className={`w-100 flex justify-center items-center rounded-md mt-1  border-1 py-0 px-2 ${validErr.password.msg !== '' ? 'border-red-500' : 'border-purple-400'}`}>
+                                    className={`w-full flex justify-center items-center border rounded-md mt-1  border-1 py-0 px-2 ${validErr.password.msg !== '' ? 'border-red-500' : 'border-purple-400'}`}>
                                     <input type={`${showPassword ? 'text' : 'password'}`} name={'password-input'}
                                            id={'txt_password'}
-                                           className={'w-100 border-0 outline-none rounded-md focus:outline-0 focus:border-0 '}
+                                           className={'w-full border-0 outline-none rounded-md focus:outline-0 focus:border-0 '}
                                            style={{padding: "6px"}}
                                            onChange={(e) => {
                                                validMount.current = true
@@ -190,7 +190,7 @@ export const LoginPage = () => {
                             </div>
 
                             <button
-                                className={` w-100 text-white flex justify-center items-center text-sm font-semibold rounded-md`}
+                                className={` w-full text-white flex justify-center items-center text-sm font-semibold rounded-md`}
 
                                 style={{
                                     backgroundColor: isValid === true ? '#7367f0' : '#a49df5',
@@ -199,11 +199,8 @@ export const LoginPage = () => {
                                 onClick={handleLogin}>
                                 {
                                     isFetch &&
-                                    <Spinner
-                                        className={'mr-3'}
-                                        animation="border"
-                                        size="sm"
-                                    />
+                                    <svg className="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
+                                    </svg>
                                 }
 
                                 Đăng Nhập
