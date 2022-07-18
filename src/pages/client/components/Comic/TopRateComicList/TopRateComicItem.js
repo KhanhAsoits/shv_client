@@ -36,9 +36,11 @@ const TopRateComicItem = ({
                     </h5>
                     <div className='flex'>
                       <span
-                        className={`mr-2 ${rewardedWeek && 'text-[#65c0ba]'} ${
-                          popularWeek && 'text-[#ebb617]'
-                        } ${rewardedWeek && 'text-textHover'}`}
+                        className={`mr-2 ${
+                          rewardedWeek && 'text-textSuccessColor'
+                        } ${popularWeek && 'text-[#ebb617]'} ${
+                          rewardedWeek && 'text-textHover'
+                        }`}
                       >
                         {comic.point}
                       </span>

@@ -7,7 +7,11 @@ import { Col, Row } from 'react-bootstrap';
 
 const totalCol = 12;
 
-const ComicList = ({ comicList = [], itemsPerRow = 2 }) => {
+const ComicList = ({
+  comicList = [],
+  itemsPerRow = 2,
+  hasRateInfo = false,
+}) => {
   return (
     <Row>
       {comicList.length > 0 &&
@@ -21,6 +25,14 @@ const ComicList = ({ comicList = [], itemsPerRow = 2 }) => {
             category: 'Huyền Huyễn',
             slug: 'nguyen-to-dai-luc',
           };
+
+          if (hasRateInfo) {
+            props = {
+              ...props,
+              star: '5.00',
+              rate: 4,
+            };
+          }
 
           return (
             <Fragment key={index}>
@@ -39,6 +51,8 @@ const ComicList = ({ comicList = [], itemsPerRow = 2 }) => {
 
 ComicList.propTypes = {
   comicList: PropTypes.array.isRequired,
+  itemsPerRow: PropTypes.number,
+  hasRateInfo: PropTypes.bool,
 };
 
 export default ComicList;

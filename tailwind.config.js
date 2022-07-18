@@ -7,6 +7,7 @@ module.exports = {
         textPrimaryColor: '#333333',
         textSecondaryColor: '#666666',
         textHover: '#a6b3b3',
+        textSuccessColor: '#65c0ba',
       },
     },
     screens: {

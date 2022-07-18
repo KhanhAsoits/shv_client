@@ -10,6 +10,8 @@ import imageUrl from '../../images/common/comic-image1.jpg';
 import { Link } from 'react-router-dom';
 import NewUpdatedComic from './components/Comic/NewUpdatedComic';
 import TopRateComicList from './components/Comic/TopRateComicList';
+import HighRateComicSection from './components/Comic/HighRateComicSection';
+import NewRateSection from './components/Comic/NewRateSection/NewRateSection';
 
 function Index() {
   return (
@@ -79,6 +81,14 @@ function Index() {
         </Row>
         <Row className='pt-16'>
           <TopRateComicList />
+        </Row>
+        <Row className='pt-14'>
+          <Col xs={8}>
+            <HighRateComicSection />
+          </Col>
+          <Col xs={4}>
+            <NewRateSection />
+          </Col>
         </Row>
       </ClientMainLayout>
     </div>
