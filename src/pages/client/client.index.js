@@ -12,6 +12,8 @@ import NewUpdatedComic from './components/Comic/NewUpdatedComic';
 import TopRateComicList from './components/Comic/TopRateComicList';
 import HighRateComicSection from './components/Comic/HighRateComicSection';
 import NewRateSection from './components/Comic/NewRateSection/NewRateSection';
+import NewPostComicSection from './components/Comic/NewPostComicSection/NewPostComicSection';
+import NewCompleteComicSection from './components/Comic/NewCompleteComicSection';
 
 function Index() {
   return (
@@ -22,7 +24,7 @@ function Index() {
             <SectionLayout>
               <Fragment>
                 <SectionHeader text='Biên tập viên đề cử' to='/truyen' />
-                <ComicList comicList={Array(8).fill(0)} fullComicInfo />
+                <ComicList comicList={Array(8).fill(0)} />
               </Fragment>
             </SectionLayout>
           </Col>
@@ -53,7 +55,6 @@ function Index() {
                         />
                         <div className='flex flex-col justify-end'>
                           {Array(6)
-                            .fill(0)
                             .fill(0)
                             .map((item, index) => (
                               <li
@@ -88,6 +89,14 @@ function Index() {
           </Col>
           <Col xs={4}>
             <NewRateSection />
+          </Col>
+        </Row>
+        <Row className='pt-12 pb-4'>
+          <Col xs={4}>
+            <NewPostComicSection />
+          </Col>
+          <Col xs={8}>
+            <NewCompleteComicSection />
           </Col>
         </Row>
       </ClientMainLayout>

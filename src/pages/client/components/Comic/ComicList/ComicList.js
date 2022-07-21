@@ -7,11 +7,7 @@ import { Col, Row } from 'react-bootstrap';
 
 const totalCol = 12;
 
-const ComicList = ({
-  comicList = [],
-  itemsPerRow = 2,
-  hasRateInfo = false,
-}) => {
+const ComicList = ({ comicList, itemsPerRow = 2, hasRateInfo = false }) => {
   return (
     <Row>
       {comicList.length > 0 &&
